@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эвтюмия · Выбор услуги</title>
+  <link rel="stylesheet" href="css/serv.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <img src="images/logo.svg" alt="Эвтюмия" class="logo">
+      <nav class="menu">
+        <a href="index.html">ГЛАВНАЯ</a>
+        <a href="progs.html">ПРОГРАММЫ</a>
+        <a href="news.html">НОВОСТИ</a>
+        <a href="#contacts">КОНТАКТЫ</a>
+      </nav>
+      <a href="faq.html" class="faq-link">FAQ</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main-inner">
+      <h1 class="title">ВЫБОР УСЛУГИ</h1>
+      <img src="images/doodles.png" alt="Почеркушка" class="doodle-right">
+      <div class="card">
+        <div class="services">
+          <div class="service-row" data-price="5000"><span class="more">Подробнее</span><span class="name">ТИР</span><div class="checkbox"></div></div>
+          <div class="service-row active" data-price="3000"><span class="more">Подробнее</span><span class="name">МЕТАНИЕ ТОПОРА</span><div class="checkbox checked"></div></div>
+          <div class="service-row" data-price="6000"><span class="more">Подробнее</span><span class="name">КОМНАТА ЯРОСТИ</span><div class="checkbox"></div></div>
+          <div class="service-row" data-price="8000"><span class="more">Подробнее</span><span class="name">ПАКЕТ "MAXIMUM" 2 АТТРАКЦИОНА, НАПИТОК И ДЕСЕРТ</span><div class="checkbox"></div></div>
+          <div class="service-row" data-price="10000" data-min="6"><span class="more">Подробнее</span><span class="name">ПАКЕТ "ВДОХ-ВЫХОД" ОТ 6 ЧЕЛ.</span><div class="checkbox"></div></div>
+          <div class="service-row" data-price="12000" data-min="10"><span class="more">Подробнее</span><span class="name">ПАКЕТ "КОРПОРАТИВ" ОТ 10 ЧЕЛ.</span><div class="checkbox"></div></div>
+        </div>
+        <div class="people"><label for="people-count">КОЛИЧЕСТВО ЧЕЛОВЕК:</label><input type="number" id="people-count" value="1" min="1" step="1"></div>
+        <img src="images/red-triangles-1.png" alt="Треугольники" class="triangles-left">
+      </div>
+      <div class="bottom"><div class="total">ИТОГО: <span id="total-price">3000 РУБ.</span></div><button class="pay" onclick="alert('Функция оплаты в разработке')">ОПЛАТИТЬ</button></div>
+    </div>
+  </main>
+
+  <footer class="black-footer" id="contacts">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-left"><h3 class="footer-heading">КОНТАКТЫ</h3><img src="images/bucket-man.png" alt="Человек в ведре" class="footer-img bucket-man"></div>
+        <div class="footer-middle"><img src="images/phones.png" alt="Телефоны" class="footer-img phones"></div>
+        <div class="footer-right"><div class="footer-info"><p>Телефон: +7 (903) 666 13 13<br>WhatsApp: +7 (903) 666 13 13<br>Email: euthymia@gmail.com</p><p>Адрес: г. Санкт-Петербург, Садовая 13</p><p>Реквизиты:<br>ИП ДАРЬЯ Данилова Александровна<br>ИНН 38293024728904 / ОГРНИП 3739480204756248</p></div></div>
+      </div>
+      <div class="footer-bottom"><div class="footer-cta"><span class="cta-white">СВЯЖИТЕСЬ С</span><span class="cta-red">НАМИ</span></div><img src="images/megaphone.png" alt="Мегафон" class="megaphone"></div>
+    </div>
+  </footer>
+
+  <script>
+    const serviceRows = document.querySelectorAll('.service-row');
+    const peopleInput = document.getElementById('people-count');
+    const totalSpan = document.getElementById('total-price');
+    function recalc() {
+      let sum = 0, minPeople = 1, selectedCount = 0;
+      serviceRows.forEach(row => { if(row.classList.contains('active')){ const price=parseInt(row.dataset.price); sum+=price; selectedCount++; if(row.dataset.min) minPeople=Math.max(minPeople,parseInt(row.dataset.min)); } });
+      let people = parseInt(peopleInput.value);
+      if(isNaN(people)||people<1) people=1;
+      if(people<minPeople){ people=minPeople; peopleInput.value=people; }
+      let total = sum * people;
+      if(people>1||selectedCount>1) total = Math.round(total*0.95);
+      totalSpan.textContent = total.toLocaleString() + ' РУБ.';
+    }
+    serviceRows.forEach(row=>{ row.addEventListener('click',(e)=>{ if(e.target.classList.contains('more')) return; row.classList.toggle('active'); row.querySelector('.checkbox').classList.toggle('checked'); recalc(); }); });
+    peopleInput.addEventListener('input', recalc);
+    recalc();
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эвтюмия — Новости</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#000;font-family:'Inter',sans-serif}
+    :root{--red:#CC1800;--black:#1A1716;--white:#fff;--gray:#C8C2C3}
+    @font-face{font-family:'Nozhik';src:url('fonts/Nozhik-Bold.woff2') format('woff2'),url('fonts/Nozhik-Bold.woff') format('woff');font-weight:bold}
+    @font-face{font-family:'Onder';src:url('fonts/Onder-Regular.woff2') format('woff2'),url('fonts/Onder-Regular.woff') format('woff')}
+    @font-face{font-family:'NEXT ART';src:url('fonts/NEXTART-SemiBold.woff2') format('woff2'),url('fonts/NEXTART-SemiBold.woff') format('woff');font-weight:600}
+    @font-face{font-family:'NEXT ART';src:url('fonts/NEXTART-Regular.woff2') format('woff2'),url('fonts/NEXTART-Regular.woff') format('woff');font-weight:400}
+    .header{position:sticky;top:0;z-index:100;width:100%;height:138px;background:var(--black);display:flex;align-items:center;padding:0 5%}
+    .header-container{width:100%;display:flex;align-items:center;justify-content:space-between}
+    .logo{width:70px;height:97px;object-fit:contain}
+    .menu{display:flex;align-items:center;gap:30px;margin:0 auto}
+    .menu a{font-family:'Nozhik',sans-serif;font-weight:bold;font-size:40px;color:var(--white);text-decoration:none}
+    .faq-link{font-family:'Nozhik',sans-serif;font-weight:bold;font-size:40px;color:var(--gray);text-decoration:none}
+    .black-footer{width:100%;background:var(--black);color:var(--white);padding:60px 5% 40px}
+    .footer-container{width:100%}
+    .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+    .footer-left{display:flex;flex-direction:column}
+    .footer-heading{font-family:'Onder',sans-serif;font-size:18px;text-transform:uppercase;margin-bottom:15px}
+    .footer-img.bucket-man{width:250px}
+    .footer-middle{margin-top:-60px;position:relative;z-index:1}
+    .footer-img.phones{width:280px}
+    .footer-right{max-width:400px}
+    .footer-info{font-family:'NEXT ART',sans-serif;font-weight:bold;font-size:20px;line-height:1.5}
+    .footer-info p{margin-bottom:1em}
+    .footer-bottom{display:flex;flex-direction:column;align-items:center;margin-top:40px}
+    .footer-cta{display:flex;align-items:baseline;margin-bottom:20px}
+    .cta-white{font-family:'Onder',sans-serif;font-size:50px;margin-right:15px}
+    .cta-red{font-family:'Onder',sans-serif;font-size:120px;color:var(--red)}
+    .megaphone{width:200px;margin-top:15px}
+    .page{max-width:1080px;margin:0 auto;background:#181312}
+    .section{padding:14px;display:grid;gap:14px}
+    .dark{background:#181312}
+    .light{background:#f6f2ec;color:#111}
+    .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:8px;align-items:end}
+    .hero h1{margin:0;font-size:200px;line-height:0.82;letter-spacing:-0.08em;font-weight:930;color:var(--red);text-transform:uppercase}
+    .hero .tag{font-size:10px;text-transform:uppercase;color:#c2bbb2}
+    .hero-art{display:grid;justify-items:end;align-items:end}
+    .hero-art .m1{font-size:66px;transform:rotate(-20deg)}
+    .hero-art .m2{font-size:104px;transform:translateY(10px) rotate(8deg)}
+    .two-col{grid-template-columns:1fr 1fr}
+    .block{padding:16px;display:grid;align-content:start;min-height:180px}
+    .block h2{font-size:34px;line-height:0.88;letter-spacing:-0.08em;font-weight:900;text-transform:uppercase;margin:0}
+    .block p{margin-top:12px;font-size:11px;line-height:1.5;color:#ddd6cf}
+    .warning h2,.promo h2,.birthday h2{color:var(--red)}
+    .poster{position:relative;overflow:hidden}
+    .poster .side{position:absolute;left:14px;top:16px;font-size:28px;font-weight:900;text-transform:uppercase;color:#111;writing-mode:vertical-rl;transform:rotate(180deg)}
+    .poster .art{position:absolute;right:14px;bottom:14px;font-size:82px}
+    .feature{min-height:260px;display:grid;gap:12px}
+    .silhouette{width:100%;height:120px;background:linear-gradient(180deg,rgba(226,38,19,0.95),rgba(226,38,19,0.12));clip-path:polygon(39% 0,61% 0,67% 9%,71% 22%,77% 36%,81% 52%,76% 70%,60% 100%,40% 100%,24% 70%,19% 52%,23% 36%,29% 22%,33% 9%);opacity:0.85}
+    .mix-grid{grid-template-columns:1fr 1fr}
+    .promo{background:#f6f2ec;color:#111}
+    .promo .actions,.birthday .actions{margin-top:auto;display:grid;gap:10px}
+    .btn{display:inline-block;padding:10px 12px;font-size:11px;font-weight:800;text-transform:uppercase;text-decoration:none}
+    .btn.dark{background:#1e1e1e;color:#fff}
+    .btn.red{background:var(--red);color:#fff}
+    .birthday .disc{font-size:64px;margin-bottom:12px}
+    @media (max-width:420px){.hero h1{font-size:56px}.block h2{font-size:30px}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <img src="images/logo.svg" alt="Эвтюмия" class="logo">
+      <nav class="menu">
+        <a href="index.html">ГЛАВНАЯ</a>
+        <a href="progs.html">ПРОГРАММЫ</a>
+        <a href="news.html">НОВОСТИ</a>
+        <a href="#contacts">КОНТАКТЫ</a>
+      </nav>
+      <a href="faq.html" class="faq-link">FAQ</a>
+    </div>
+  </header>
+  <main class="page">
+    <section class="section dark hero">
+      <div class="hero-grid">
+        <div><h1>НОВО<br>СТИ</h1><p class="tag">И многое многое многое другое</p></div>
+        <div class="hero-art"><div class="m1">📣</div><div class="m2">✋</div></div>
+      </div>
+    </section>
+    <section class="section two-col dark">
+      <article class="block warning"><h2>ВНИМАНИЕ!</h2><p>На официальном сайте Эвтюмии запустился раздел «Новости» — теперь вы всегда будете в курсе: новых программ, анонсов событий, спецпредложений, эксклюзивных акций, историй участников и полезных советов по работе с эмоциями.</p></article>
+      <article class="block poster light"><div class="side">НЕ ПРО<br>ПУСТИ</div><div class="art">⚡</div></article>
+    </section>
+    <section class="section dark">
+      <article class="feature"><h2>КАК РАБОТАТЬ<br><span style="color:var(--red)">С ЭМОЦИЯМИ?</span></h2><div class="silhouette"></div><p>Эмоции — это нормально. Они не бывают «плохими» или «хорошими». Важно не подавлять их, а учиться проживать.<br><br>1. Заметьте. Спросите себя: «Что я сейчас чувствую?» Просто назовите эмоцию — гнев, тревога, радость, обида.<br>2. Примите. Не осуждайте себя за то, что чувствуете. Эмоция уже есть — борьба с ней только усиливает напряжение.<br>3. Проживите. Дайте эмоции выход: подышите глубоко, прогуляйтесь, напишите на бумаге, побейте подушку, поговорите с близким или приходите к нам в «Эвтюмию».</p></article>
+    </section>
+    <section class="section mix-grid">
+      <article class="block promo"><h2>КОРПОРАТИВНЫЕ<br>ПАКЕТЫ</h2><div class="actions"><a href="serv.html" class="btn dark">от 799 руб. / гостя</a><a href="serv.html" class="btn red">провести</a></div></article>
+      <article class="block birthday dark"><div class="disc">🪩</div><h2>ДНИ<br>РОЖДЕНИЯ</h2><div class="actions"><a href="serv.html" class="btn dark">от 799 руб. / гостя</a><a href="serv.html" class="btn red">провести</a></div></article>
+    </section>
+  </main>
+  <footer class="black-footer" id="contacts">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-left"><h3 class="footer-heading">КОНТАКТЫ</h3><img src="images/bucket-man.png" alt="Человек в ведре" class="footer-img bucket-man"></div>
+        <div class="footer-middle"><img src="images/phones.png" alt="Телефоны" class="footer-img phones"></div>
+        <div class="footer-right"><div class="footer-info"><p>Телефон: +7 (903) 666 13 13<br>WhatsApp: +7 (903) 666 13 13<br>Email: euthymia@gmail.com</p><p>Адрес: г. Санкт-Петербург, Садовая 13</p><p>Реквизиты:<br>ИП ДАРЬЯ Данилова Александровна<br>ИНН 38293024728904 / ОГРНИП 3739480204756248</p></div></div>
+      </div>
+      <div class="footer-bottom"><div class="footer-cta"><span class="cta-white">СВЯЖИТЕСЬ С</span><span class="cta-red">НАМИ</span></div><img src="images/megaphone.png" alt="Мегафон" class="megaphone"></div>
+    </div>
+  </footer>
+</body>
+</html>

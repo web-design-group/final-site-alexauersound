@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эвтюмия · Отзывы</title>
+  <link rel="stylesheet" href="css/reviews.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <img src="images/logo.svg" alt="Эвтюмия" class="logo">
+      <nav class="menu">
+        <a href="index.html">ГЛАВНАЯ</a>
+        <a href="progs.html">ПРОГРАММЫ</a>
+        <a href="news.html">НОВОСТИ</a>
+        <a href="#contacts">КОНТАКТЫ</a>
+      </nav>
+      <a href="faq.html" class="faq-link">FAQ</a>
+    </div>
+  </header>
+
+  <div class="reviews-header">
+    <img src="images/arrow.png" alt="←" class="arrow arrow-left">
+    <h1 class="reviews-title">ОТЗЫВЫ</h1>
+    <img src="images/arrow.png" alt="→" class="arrow arrow-right">
+  </div>
+
+  <div class="carousel-section">
+    <button class="carousel-btn prev-btn" id="prevBtn">←</button>
+    <div class="carousel-wrapper">
+      <div class="carousel-container" id="carouselContainer">
+        <div class="reviews-grid" id="reviewsGrid"></div>
+      </div>
+    </div>
+    <button class="carousel-btn next-btn" id="nextBtn">→</button>
+  </div>
+
+  <footer class="black-footer" id="contacts">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-left"><h3 class="footer-heading">КОНТАКТЫ</h3><img src="images/bucket-man.png" alt="Человек в ведре" class="footer-img bucket-man"></div>
+        <div class="footer-middle"><img src="images/phones.png" alt="Телефоны" class="footer-img phones"></div>
+        <div class="footer-right"><div class="footer-info"><p>Телефон: +7 (903) 666 13 13<br>WhatsApp: +7 (903) 666 13 13<br>Email: euthymia@gmail.com</p><p>Адрес: г. Санкт-Петербург, Садовая 13</p><p>Реквизиты:<br>ИП ДАРЬЯ Данилова Александровна<br>ИНН 38293024728904 / ОГРНИП 3739480204756248</p></div></div>
+      </div>
+      <div class="footer-bottom"><div class="footer-cta"><span class="cta-white">СВЯЖИТЕСЬ С</span><span class="cta-red">НАМИ</span></div><img src="images/megaphone.png" alt="Мегафон" class="megaphone"></div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const reviewsData = [
+        { name: "ДИМА, 21", text: "МЕТАЛИ ТОПОРЫ — ОКАЗАЛОСЬ СЛОЖНО, НО КОГДА ПОПАЛ… 🔥🔥🔥 ЭМОЦИИ ЗАШКАЛИВАЮТ. ВЗЯЛИ ПАКЕТ С ДВУМЯ АТТРАКЦИОНАМИ, ЕЩЁ И ФОТКАЛИ НАС. ТЕПЕРЬ ХОТИМ КАЖДЫЙ МЕСЯЦ. ЭВТЮМИЯ — ТОП!", color: "red" },
+        { name: "ВИТАЛИК, 23", text: "ОТДУШАРИЛСЯ ПОЛНОСТЬЮ 🔥 КОМНАТА ЯРОСТИ — ИМБА. БИТА, КЛАВА, ТАРЕЛКИ… ИНСТРУКТОР СКАЗАЛ «БЕЙ ДОБРЕЕ», Я ПОРЖАЛ, НО РЕАЛЬНО ПОМОГЛО. ПОЙДУ ЕЩЁ, КОГДА НАЧАЛЬНИК ДОСТАНЕТ.", color: "gray" },
+        { name: "ЛЕНО4КА, 19", text: "ТИР С ВИНТОВКОЙ — ЭТО КАЙФ 🤯 ПУЛИ ЛЕТЯТ, МИШЕНИ ПАДАЮТ, БАШКА ЧИСТАЯ. А ПОТОМ КОФЕ С БРАУНИ. САМОЕ ТО ПОСЛЕ ПАРЫ В УНИВЕРЕ. СОВЕТУЮ ВСЕМ, У КОГО НЕРВЫ НИ К ЧЁРТУ.", color: "red" },
+        { name: "АЛИНА, 26", text: "ПРИШЛА С ПОДРУГОЙ РАЗБИТЬ ПОСУДУ. ДУМАЛИ, БУДЕТ ТУПО, А ОКАЗАЛОСЬ — ТЕРАПЕВТИЧНО. ПРЯМ С ДУШИ СНЯЛО. ПЛЮС ИНТЕРЬЕР ПРИКОЛЬНЫЙ, ГАЗЕТНЫЕ ВЫРЕЗКИ ВЕЗДЕ. СДЕЛАЛИ МНОГО ФОТО. ОБЯЗАТЕЛЬНО ВЕРНЁМСЯ ✨", color: "gray" },
+        { name: "КИРЮХА, 30", text: "КРУШИЛ ТЕХНИКУ БИТОЙ — ЭТО МОЙ НОВЫЙ СПОРТ. ВСЁ ЧЕТКО: ВЫДАЛИ КОМБЕЗ, ОЧКИ, ОБЪЯСНИЛИ. БЕЗ НАПРЯГА. ПОСЛЕ — КОФЕ В КАФЕ. ФОРМАТ, КОТОРЫЙ ЗАЛЕТАЕТ. ВСЕМ, КТО КОПИТ НЕГАТИВ, СЮДА.", color: "red" },
+        { name: "МАКС, 28", text: "С ДРУЗЬЯМИ ВЗЯЛИ ПАКЕТ «МАКСИМУМ». ОТДУБАСИЛИ МАНЕКЕНА, ПОБИЛИ ПОСУДУ И ПОШВЫРЯЛИ ТОПОРЫ. АДРЕНАЛИН ЗАШКАЛИВАЕТ, НО ПОТОМ ТАКОЙ РЕЛАКС. ОЧЕНЬ КРУТОЙ ФОРМАТ ДЛЯ МУЖСКОЙ КОМПАНИИ. ВЕРНЁМСЯ ОБЯЗАТЕЛЬНО!", color: "gray" },
+        { name: "НАСТЯ, 24", text: "ПРИШЛА ОДНА, БЫЛО НЕМНОГО НЕЛОВКО, НО ИНСТРУКТОР ВСЁ ОБЪЯСНИЛ И ПОДДЕРЖИВАЛ. РАЗНЕСЛА ТЕЛЕВИЗОР КУВАЛДОЙ — ЭТО ЛУЧШИЙ АНТИСТРЕСС. ВСЕМ ДЕВУШКАМ СОВЕТУЮ, НЕ СТЕСНЯЙТЕСЬ!", color: "red" },
+        { name: "ДЭН, 22", text: "ПРИХОДИЛИ С ДЕВУШКОЙ НА МЕТАНИЕ ТОПОРОВ. ОНА С ПЕРВОГО РАЗА ПОПАЛА, Я ТРИ РАЗА МАЗАЛ. БЫЛО ВЕСЕЛО, ПОРЖАЛИ ОТ ДУШИ. ПОТОМ ПОШЛИ В КАФЕ, ВСЁ ПРЯМО ДЛЯ ИДЕАЛЬНОГО СВИДАНИЯ.", color: "gray" },
+        { name: "СВЕТА, 27", text: "ЗАКАЗЫВАЛИ КОРПОРАТИВ НА 10 ЧЕЛОВЕК. ВСЕ В ВОСТОРГЕ! РАЗБИВАЛИ ТЕХНИКУ, СТРЕЛЯЛИ В ТИРЕ. ИНСТРУКТОРЫ ВЕСЁЛЫЕ, ПОМОГАЛИ. ОРГАНИЗАЦИЯ НА ВЫСОТЕ. ДАЖЕ ФОТОГРАФА ЗАКАЗАЛИ — ШИКАРНЫЕ КАДРЫ.", color: "red" },
+        { name: "ИЛЬЯ, 35", text: "БЫЛ В КОМНАТЕ ЯРОСТИ ПОСЛЕ ТЯЖЁЛОЙ НЕДЕЛИ. ВЫПУСТИЛ ПАР НА СТАРОМ КОМПЬЮТЕРЕ. ОЩУЩЕНИЕ, БУДТО ЗАНОВО РОДИЛСЯ. ВСЕМ РЕКОМЕНДУЮ, ОСОБЕННО ОФИСНЫМ РАБОТНИКАМ.", color: "gray" }
+      ];
+      function shuffleArray(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+      const shuffledReviews = shuffleArray([...reviewsData]);
+      const grid = document.getElementById('reviewsGrid');
+      const container = document.getElementById('carouselContainer');
+      function renderCards(){grid.innerHTML='';shuffledReviews.forEach(data=>{const card=document.createElement('div');card.className=`review-card ${data.color==='red'?'card-red':'card-gray'}`;card.innerHTML=`<div class="card-content"><div class="reviewer-name">${data.name}</div><p class="review-text">${data.text}</p></div>`;grid.appendChild(card)});}
+      renderCards();
+      document.getElementById('prevBtn').addEventListener('click',()=>container.scrollBy({left:-(632+85),behavior:'smooth'}));
+      document.getElementById('nextBtn').addEventListener('click',()=>container.scrollBy({left:632+85,behavior:'smooth'}));
+      container.addEventListener('wheel',(e)=>{if(e.deltaY!==0){e.preventDefault();container.scrollBy({left:e.deltaY*1.5,behavior:'smooth'})}},{passive:false});
+    })();
+  </script>
+</body>
+</html>
